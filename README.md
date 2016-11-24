@@ -5,7 +5,7 @@
 
 ## Demo
 
-View the app [Madwork](http://franbueno.github.io/madwork/).
+View the app [Madwork](http://www.franciscobueno.com/madwork/#/).
 
 
 ## Application
@@ -47,7 +47,3 @@ $ npm install
 * `gulp` - development mode, prepare files, watch changes and start server on port 1337
 
 * `gulp --preview` - generate deploy version (`gulp --release`) on `dist` directory and start server on port 1337 looking to this directory
-
-* `gulp --publish` - publish deploy version files on `gh-pages` branch
-
-  * `gulp --init` - create local directory with github repository on gh-pages branch
