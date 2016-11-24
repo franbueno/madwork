@@ -7,9 +7,9 @@ define(function(require) {
 
   //---
 
-  SearchCtrl.$inject = ['$location', 'NavBarService', 'MadworkResource', 'moment', '$filter'];
+  SearchCtrl.$inject = ['$location', '$anchorScroll', 'NavBarService', 'MadworkResource', 'moment', '$filter'];
 
-  function SearchCtrl($location, NavBarService, dataService, moment, $filter) {
+  function SearchCtrl($location, $anchorScroll, NavBarService, dataService, moment, $filter) {
     
     var vm = this;
     vm.searchField = '';
@@ -20,30 +20,32 @@ define(function(require) {
     vm.numPerPage = 12;
     vm.filteredBooks = [];
 
-    //---
-
     // update search menu option url
     NavBarService.updateSearchUrl('/');
 
-    //---
+    // get data
     dataService.getData(function(data){
       vm.books = data;
       vm.search();
     });
 
+    // redirect to book details
     vm.detailBook = function(id) {
       $location.path('/' + id);
     };
 
     vm.search = function() {
-      vm.filteredBooks = $filter('filter')(vm.books, {name:vm.searchField});
-      
-      //vm.filteredBooks = $filter('limitTo')(vm.books, vm.numPerPage);
+      vm.filteredBooks = $filter('filter')(vm.books, function(value){
+        if((value.name.toLowerCase().indexOf(vm.searchField) !== -1) || (value.author.name.toLowerCase().indexOf(vm.searchField) !== -1))
+          return value;
+      });
 
+      //Filter for category
       if (vm.booksAbout !== '') {
         vm.filteredBooks = $filter('filter')(vm.filteredBooks, {genre:{name:vm.booksAbout}});
       }
 
+      //Filter for "Find my best"
       if (vm.bestFiction !== '') {
         vm.filteredBooks = $filter('filter')(vm.filteredBooks, {genre:{category:vm.bestFiction}}, true);
         vm.filteredBooks = $filter('orderBy')(vm.filteredBooks, 'likes', true);
@@ -51,6 +53,7 @@ define(function(require) {
 
       vm.totalPages = vm.filteredBooks.length;
 
+      //Manage pagination
       var begin = ((vm.currentPage - 1) * vm.numPerPage);
       var end = begin + vm.numPerPage;
       vm.filteredBooksPage = vm.filteredBooks.slice(begin, end);
@@ -58,11 +61,15 @@ define(function(require) {
       vm.currentPage = 1;
     };
 
+    //Update view list
     vm.pageChanged = function() {
-      console.log(vm.currentPage);
       var begin = ((vm.currentPage - 1) * vm.numPerPage);
       var end = begin + vm.numPerPage;
+      
       vm.filteredBooksPage = vm.filteredBooks.slice(begin, end);
+
+      $location.hash('app');
+      $anchorScroll();
     };
 
   }
