@@ -1,0 +1,38 @@
+.detail {  
+  .container{
+    max-width: 600px;
+    font-weight:300;
+    padding: 30px 0;
+    span.small {
+      font-size: 10px !important;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: #888;
+      letter-spacing: 2px;
+      padding-left: 2px;
+      marging-bottom:20px;
+    }
+    p.description{
+     margin: 20px 0;
+    }
+    span.type{
+     font-style: italic;
+    }
+    .inner {
+      width: 40%;
+      height: 1px;
+      margin: 40px auto;
+      border-bottom: 1px solid #333;
+    }
+    .author{
+      margin-top:15px;
+      p {
+        font-weight: 300;
+        font-size: 20px;
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+

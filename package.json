@@ -1,0 +1,71 @@
+{
+  "private": true,
+  "name": "madwork",
+  "version": "1.0.0",
+  "description": "displays the books available in the books.json",
+  "author": "Fran Bueno",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/franbueno/madwork.git"
+  },
+  "scripts": {
+    "outdated": "npm outdated --depth=0",
+    "localip": "node tools/scripts/localip",
+    "testos": "node tools/scripts/testos",
+    "setup": "node tools/scripts/setup",
+    "preinstall": "npm run setup",
+    "postinstall": "gulp --init && bower install",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp",
+    "preview": "gulp --preview",
+    "publish": "gulp --publish"
+  },
+  "keywords": [
+    "angularjs",
+    "madwork"
+  ],
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.17.5",
+    "del": "^2.2.2",
+    "escodegen": "^1.8.1",
+    "esprima": "^3.1.1",
+    "gulp": "^3.9.1",
+    "gulp-angular-templatecache": "^1.7.0",
+    "gulp-autoprefixer": "^3.0.1",
+    "gulp-bump": "^2.5.0",
+    "gulp-cached": "^1.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^5.0.0",
+    "gulp-debug": "^2.1.0",
+    "gulp-filter": "^4.0.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-inject-string": "^1.1.0",
+    "gulp-jshint": "^2.0.2",
+    "gulp-less": "^3.2.0",
+    "gulp-lintspaces": "^0.5.0",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-print": "^2.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-shell": "^0.5.2",
+    "gulp-task-listing": "^1.0.1",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "http-proxy-middleware": "^0.17.2",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1",
+    "lazypipe": "^1.0.1",
+    "open": "0.0.5",
+    "requirejs": "^2.3.2",
+    "run-sequence": "^1.2.2",
+    "through2": "^2.0.1",
+    "yargs": "^6.3.0"
+  }
+}

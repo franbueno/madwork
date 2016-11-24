@@ -1,0 +1,21 @@
+{
+  "name": "madwork",
+  "version": "1.0.0",
+  "ignore": [
+    "**/.*",
+    ".local",
+    "helpers",
+    "node_modules",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "0.14.3",
+    "requirejs": "2.3.2",
+    "angular": "~1.5.8",
+    "angular-resource": "~1.5.8",
+    "angular-route": "~1.5.8",
+    "angular-moment": "~1.0.0",    
+    "moment": "~2.8.0"
+  }
+}

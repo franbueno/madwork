@@ -1,0 +1,64 @@
+<div class="container">
+  <div id="filter" class="row"> 
+    <div class="col-md-12">
+      <ul>
+       <li>
+          Find me the best:
+          <select 
+                ng-options="book.genre.category as book.genre.category for book in vm.books | unique: 'genre.category'"
+                ng-model="vm.bestFiction" ng-change="vm.search()"></select>
+
+        </li>
+        <li>
+          Books about:
+          <select 
+                ng-options="book.genre.name as book.genre.name for book in vm.books | unique: 'genre.name'"
+                ng-model="vm.booksAbout" ng-change="vm.search()"></select>
+        </li>
+        <li>
+            <input
+              type="text" class="form-control" id="searchField"
+              placeholder="Search Books" ng-model="vm.searchField" ng-change="vm.search()">
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div ng-repeat="book in vm.filteredBooksPage" class="books col-md-4 col-sm-6 col-xs-12">
+        <div class="item" ng-click="vm.detailBook(book.id)">
+          <div class="item-image">
+            <img src="{{book.cover}}">
+          </div>
+          <div class="item-content">
+            <p class="small">{{ book.author.name }}</p>
+            <h4 class="header">{{ book.name }}</h4>
+          </div>
+          <div class="post-meta">
+            <ul class="list-meta list-inline">
+              <li><i class="glyphicon glyphicon-heart-empty"></i> {{ book.likes }}</li>
+              <li class="pull-right" am-time-ago="book.published"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="text-center">
+      <uib-pagination 
+        ng-model="vm.currentPage"
+        items-per-page = "vm.numPerPage"
+        total-items="vm.totalPages"
+        max-size="vm.numPerPage"  
+        boundary-links="true"
+        ng-change="vm.pageChanged()"
+        >
+      </uib-pagination>
+    </div>
+  </div>
+</div>
+
+
+    
+

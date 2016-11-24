@@ -1,0 +1,57 @@
+
+<div class="detail bg1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="margin">{{vm.book[0].name}}</h3>
+        <span class="small">By {{ vm.book[0].author.name }}</span>
+        <p class="description">{{ vm.book[0].description }}</p>
+        <p>Categories: <br><span class="type">{{ vm.book[0].genre.name }}, {{ vm.book[0].genre.category }} <span></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="detail bg2">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="margin">Introduction</h3>
+        <div ng-repeat="intro in vm.book[0].introduction">
+          <p>{{intro.content}}</p>
+        </div>
+        <div class="inner">&nbsp;</div>
+        <div class="author text-center">
+          <img src="{{vm.book[0].author.avatar}}" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="200" height="200">
+          <p>Written by {{ vm.book[0].author.name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bg3">
+  <div class="container">
+    <div class="row books">
+      <div class="col-md-12">
+        <h3 class="text-center">Similar Reading</h3>
+        <p class="text-center">If you liked this book, we recommend you check out these emerging titles.</p>
+        <div ng-repeat="book in vm.booksRecommended | limitTo:3 | orderBy:vm.random" class="books col-md-4">
+          <div class="item" ng-click="vm.detailBook(book.id)">
+            <div class="item-image">
+              <img src="{{book.cover}}">
+            </div>
+            <div class="item-content">
+              <p class="small">{{ book.author.name }}</p>
+              <h4 class="header">{{ book.name }}</h4>
+            </div>
+            <div class="post-meta">
+              <ul class="list-meta list-inline">
+                <li><i class="glyphicon glyphicon-heart-empty"></i> {{ book.likes }}</li>
+                <li class="pull-right" am-time-ago="book.published"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
